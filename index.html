@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Poetry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
+<style>
+  :root {
+    --amber:  #f5a623;
+    --green:  #4ecb8d;
+    --purple: #a78bfa;
+    --blue:   #60a5fa;
+    --red:    #f87171;
+    --bg:     #0a0a0f;
+    --bg2:    #10101a;
+    --bg3:    #181824;
+    --border: #2a2a3a;
+    --text:   #e8e8f0;
+    --muted:  #8888a8;
+  }
+
+  .reveal-viewport { background: var(--bg); }
+  .reveal .slides section { background: transparent; }
+
+  .reveal { font-family: 'DM Sans', sans-serif; color: var(--text); }
+  .reveal h1, .reveal h2, .reveal h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
+  .reveal h1 { font-size: 1.6em; color: var(--amber); line-height: 1.1; }
+  .reveal h2 { font-size: 1.1em; color: var(--amber); margin-bottom: .2em; }
+  .reveal h3 { font-size: .78em; color: var(--green); margin-bottom: .15em; }
+  .reveal p  { font-size: .56em; line-height: 1.45; color: var(--text); }
+  .reveal li { font-size: .54em; line-height: 1.45; margin-bottom: .1em; }
+  .reveal code { font-family: 'JetBrains Mono', monospace; font-size: .72em; }
+  .reveal pre  { box-shadow: none; background: var(--bg3); border: 1px solid var(--border);
+                 border-radius: 6px; padding: .3em .5em; margin: .25em 0; }
+  .reveal pre code { font-size: .52em; line-height: 1.35; background: transparent; color: #cdd6f4; }
+
+  .slide-hdr {
+    display: flex; align-items: center; gap: .4em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: .2em; margin-bottom: .3em;
+  }
+  .slide-hdr .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .42em; font-weight: 500;
+    color: var(--bg); background: var(--amber);
+    padding: .1em .4em; border-radius: 3px;
+    letter-spacing: .04em;
+  }
+  .slide-hdr h2 { margin: 0; font-size: .95em; }
+
+  .cols   { display: grid; gap: .5em; }
+  .cols-2 { grid-template-columns: 1fr 1fr; }
+  .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .cols-6040 { grid-template-columns: 6fr 4fr; }
+  .cols-4060 { grid-template-columns: 4fr 6fr; }
+
+  .card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 6px; padding: .35em .6em;
+  }
+  .card.amber { border-left: 3px solid var(--amber); }
+  .card.green { border-left: 3px solid var(--green); }
+  .card.purple{ border-left: 3px solid var(--purple); }
+  .card.blue  { border-left: 3px solid var(--blue); }
+  .card.red   { border-left: 3px solid var(--red); }
+  .card h3 { font-size: .64em; margin: 0 0 .12em; }
+  .card p  { font-size: .52em; margin: 0; color: #b8b8d0; }
+  .card ul { margin: 0; padding-left: 1em; }
+  .card li { font-size: .52em; color: #b8b8d0; margin-bottom: .02em; }
+
+  .reveal table { width: 100%; border-collapse: collapse; font-size: .5em; }
+  .reveal table th { background: var(--bg3); color: var(--amber); font-weight: 600;
+                     padding: .2em .4em; border: 1px solid var(--border); text-align: left; }
+  .reveal table td { padding: .18em .4em; border: 1px solid var(--border); color: #ccc; }
+  .reveal table tr:nth-child(even) td { background: #0e0e18; }
+
+  .a  { color: var(--amber); font-weight: 600; }
+  .g  { color: var(--green); font-weight: 600; }
+  .p  { color: var(--purple); font-weight: 600; }
+  .b  { color: var(--blue); font-weight: 600; }
+  .r  { color: var(--red); font-weight: 600; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  svg.diagram { display: block; margin: 0 auto; overflow: visible; }
+
+  .pill {
+    display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: .44em; padding: .08em .4em; border-radius: 99px;
+    border: 1px solid; margin: 0 .08em;
+  }
+  .pill.amber { color: var(--amber); border-color: var(--amber); }
+  .pill.green { color: var(--green); border-color: var(--green); }
+  .pill.purple{ color: var(--purple); border-color: var(--purple); }
+  .pill.blue  { color: var(--blue); border-color: var(--blue); }
+
+  .reveal .slide-footer { display: none; }
+  .title-slide h1 { font-size: 1.8em; }
+  .title-slide .subtitle {
+    font-size: .7em; color: var(--green); font-family: 'DM Sans', sans-serif;
+    font-weight: 300; letter-spacing: .04em; margin: .3em 0 .6em;
+  }
+  .title-slide .meta { font-size: .48em; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+
+  .ss-row {
+    display: flex; gap: .25em; align-items: center;
+    margin: .1em 0; font-size: .55em; font-family: 'JetBrains Mono', monospace;
+  }
+  .ss-node {
+    padding: .2em .55em; border-radius: 5px; font-size: .9em;
+    background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+  }
+  .ss-node.active { background: #1a2a1a; border-color: var(--green); color: var(--green); }
+  .ss-node.done   { background: #1a1a2a; border-color: var(--purple); color: var(--purple); }
+  .ss-arrow { color: var(--amber); }
+  .ss-label { font-size: .8em; color: var(--muted); margin-left: .3em; }
+
+  .reveal ul, .reveal ol { margin: .15em 0 .15em 1em; }
+.reveal .slides > section { display: flex !important; flex-direction: column !important; overflow-y: auto !important; align-items: stretch !important; justify-content: flex-start !important; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+
+<!-- ═══════════════════════════════ SLIDE 01 — TITLE ═══════════════════════════════ -->
+<section class="title-slide" data-background-color="#0a0a0f">
+  <div style="text-align:left; max-width:820px; margin:0 auto; padding: 1em 0;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:.5em; color:var(--muted); margin-bottom:.4em; letter-spacing:.1em;">
+      TECHNICAL PRESENTATION
+    </div>
+    <h1>Introduction to<br>Poetry</h1>
+    <div class="subtitle">The opinionated Python dependency manager &amp; build backend</div>
+    <div style="width:60px; height:3px; background:var(--amber); margin-bottom:1.4em;"></div>
+    <div style="display:flex; gap:1.2em; flex-wrap:wrap; margin-bottom:1em;">
+      <span class="pill amber">PEP 621</span>
+      <span class="pill green">Mixology</span>
+      <span class="pill purple">poetry.lock</span>
+      <span class="pill blue">poetry-core</span>
+    </div>
+    <div class="ss-row" style="margin-top:0.6em;">
+      <span class="ss-node active">🐍 Python</span>
+      <span class="ss-arrow">→</span>
+      <span class="ss-node active">📦 env</span>
+      <span class="ss-arrow">→</span>
+      <span class="ss-node active">🔒 lock</span>
+      <span class="ss-arrow">→</span>
+      <span class="ss-node active">⚙️ install</span>
+      <span class="ss-arrow">→</span>
+      <span class="ss-node done">▶ run</span>
+      <span class="ss-arrow">→</span>
+      <span class="ss-node done">🚀 publish</span>
+    </div>
+    <p style="max-width:620px; color:#a0a0c0; font-size:.56em; line-height:1.5; margin-top:1em;">
+      One tool, one config file, one lockfile — declarative dependency management with reproducible installs, isolated venvs, and PyPI publishing built in.
+    </p>
+    <div class="meta" style="margin-top:1.4em;">
+      Declare &nbsp;·&nbsp; Resolve &nbsp;·&nbsp; Lock &nbsp;·&nbsp; Install &nbsp;·&nbsp; Publish
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 02 — TOPICS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">01</span>
+    <h2>Topics</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Foundations</h3>
+        <ul>
+          <li>What Poetry is — origins, scope, design philosophy</li>
+          <li>Installation — official installer, pipx, package managers</li>
+          <li>Starting a project with <code>poetry new</code> &amp; <code>poetry init</code></li>
+          <li><code>pyproject.toml</code> in the Poetry 2.0 / PEP 621 era</li>
+        </ul>
+      </div>
+      <div class="card green" style="margin-top:0.5em;">
+        <h3 class="g">Project workflow</h3>
+        <ul>
+          <li><code>poetry add</code> / <code>poetry remove</code></li>
+          <li><code>poetry.lock</code> — deterministic dependency graph</li>
+          <li><code>poetry install</code> &amp; <code>poetry sync</code></li>
+          <li>Virtual environments — <code>poetry env</code></li>
+          <li><code>poetry run</code> &amp; <code>poetry shell</code></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Power features</h3>
+        <ul>
+          <li>Managing Python versions with pyenv / asdf</li>
+          <li>Dependency groups (dev, docs, test)</li>
+          <li>Optional extras — opt-in features for users</li>
+          <li>Private indexes &amp; mirror sources</li>
+          <li>Build &amp; publish to PyPI with <code>poetry-core</code></li>
+          <li>Plugins — export, bundle, dynamic versioning</li>
+        </ul>
+      </div>
+      <div class="card blue" style="margin-top:0.5em;">
+        <h3 class="b">Adoption &amp; performance</h3>
+        <ul>
+          <li>The Mixology resolver &amp; parallel installs</li>
+          <li>pip / pipenv / pdm / Hatch / uv comparison</li>
+          <li>Migration from <code>requirements.txt</code></li>
+          <li>Poetry 1.x → 2.0 migration to PEP 621</li>
+          <li>CI / Docker patterns and gotchas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 03 — WHAT IS POETRY ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">02</span>
+    <h2>What Is Poetry?</h2>
+  </div>
+  <p><span class="a">Poetry</span> is a Python tool for declarative dependency management, isolated environments, deterministic builds, and PyPI publishing — all driven by a single <code>pyproject.toml</code> and a checked-in <code>poetry.lock</code>.</p>
+
+  <div class="cols cols-2" style="margin-top:0.5em;">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Origin &amp; status</h3>
+        <ul>
+          <li>Created by <span class="a">Sébastien Eustace</span> — first release Feb 2018</li>
+          <li>1.0 in Dec 2019; 1.2 introduced dependency groups (Aug 2022)</li>
+          <li><span class="a">2.0 (Jan 2025)</span> — first-class PEP 621 support, <code>poetry sync</code>, pluggable shell</li>
+          <li>MIT licensed, written in Python, hosted at <code>python-poetry/poetry</code></li>
+          <li>Community-maintained; roadmap and discussions on GitHub Discussions</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">What Poetry owns</h3>
+        <ul>
+          <li><span class="a">Dependency declaration</span> — runtime, dev groups, extras</li>
+          <li><span class="a">Resolution &amp; locking</span> — Mixology resolver → <code>poetry.lock</code></li>
+          <li><span class="a">Virtual environments</span> — auto-created &amp; managed per-project</li>
+          <li><span class="a">Builds</span> — sdist + wheel via the <code>poetry-core</code> backend</li>
+          <li><span class="a">Publishing</span> — <code>poetry publish</code> straight to PyPI</li>
+          <li><span class="a">Plugin system</span> — extend without forking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card blue" style="margin-top:0.4em;">
+    <p>The pitch: <em>"npm/yarn for Python"</em> — one declarative manifest, one lockfile, one CLI verb per task. No <code>requirements.txt</code> juggling, no <code>setup.py</code> archaeology.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 04 — WHY POETRY ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">03</span>
+    <h2>Why Poetry? — Opinions That Pay Off</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Problems Poetry solves</h3>
+        <table>
+          <thead><tr><th>Pain</th><th>Poetry's answer</th></tr></thead>
+          <tbody>
+            <tr><td><code>requirements.txt</code> drift</td><td>Single declarative <code>pyproject.toml</code></td></tr>
+            <tr><td>Non-reproducible installs</td><td>Hash-pinned <code>poetry.lock</code></td></tr>
+            <tr><td>Manual venv juggling</td><td>Auto-managed per-project venv</td></tr>
+            <tr><td>Bespoke <code>setup.py</code></td><td>Standards-based <code>poetry-core</code> backend</td></tr>
+            <tr><td>Publishing ceremony</td><td>One <code>poetry publish</code></td></tr>
+            <tr><td>Ad-hoc dev/test deps</td><td>First-class dependency groups</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">Design principles</h3>
+        <ul>
+          <li><span class="a">Declarative over imperative</span> — say what, not how</li>
+          <li><span class="a">Lock by default</span> — every install is reproducible</li>
+          <li><span class="a">Standards-track</span> — PEP 517/518/621/735 are the source of truth</li>
+          <li><span class="a">Isolation</span> — every project gets its own venv automatically</li>
+          <li><span class="a">One tool, one config</span> — no pip + pip-tools + virtualenv + twine + bumpversion</li>
+        </ul>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Trade-offs (be honest)</h3>
+        <ul>
+          <li><span class="a">Slower resolver</span> than uv / pdm — large graphs cost real seconds</li>
+          <li><span class="a">No managed Python</span> — pair with pyenv/asdf for interpreter switching</li>
+          <li>Older projects pre-2.0 used <code>[tool.poetry]</code> — migrate to <code>[project]</code> when you can</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 05 — INSTALLATION ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">04</span>
+    <h2>Installation</h2>
+  </div>
+  <p>Poetry installs into its <span class="a">own isolated venv</span> — never alongside your project deps. Three good paths, one to avoid.</p>
+  <div class="cols cols-3" style="margin-top:0.5em;">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Official installer (recommended)</h3>
+        <pre><code># macOS / Linux
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Windows (PowerShell)
+(Invoke-WebRequest -Uri https://install.python-poetry.org `
+  -UseBasicParsing).Content | py -
+
+# pin a version
+curl -sSL https://install.python-poetry.org | \
+  python3 - --version 2.0.1</code></pre>
+      </div>
+      <div class="card green" style="margin-top:.4em;">
+        <h3 class="g">pipx (also great)</h3>
+        <pre><code>pipx install poetry
+pipx install poetry==2.0.1
+pipx upgrade poetry
+pipx inject poetry poetry-plugin-export</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Package managers</h3>
+        <pre><code>brew install poetry          # macOS
+scoop install poetry         # Windows
+pacman -S python-poetry      # Arch
+
+# Linux distro packages exist but
+# tend to lag — prefer pipx</code></pre>
+      </div>
+      <div class="card blue" style="margin-top:.4em;">
+        <h3 class="b">Self-update</h3>
+        <pre><code>poetry self update
+poetry self update 2.0.1
+poetry self update --preview
+poetry --version</code></pre>
+        <p>Plugins are managed the same way: <code>poetry self add poetry-plugin-export</code>.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card amber">
+        <h3 class="a">First sanity check</h3>
+        <pre><code>$ poetry --version
+Poetry (version 2.0.1)
+
+$ poetry config --list
+cache-dir = "/home/me/.cache/pypoetry"
+virtualenvs.create = true
+virtualenvs.in-project = false
+virtualenvs.path = "{cache-dir}/virtualenvs"</code></pre>
+      </div>
+      <div class="card red" style="margin-top:.4em;">
+        <h3 class="r">Don't <code>pip install poetry</code></h3>
+        <p>Installing Poetry into a project venv mixes its deps with yours and breaks the moment you uninstall something. Use <span class="g">pipx</span> or the <span class="g">official installer</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 06 — POETRY NEW / INIT ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">05</span>
+    <h2>poetry new &amp; poetry init — Starting a Project</h2>
+  </div>
+  <div class="cols cols-6040">
+    <div>
+      <div class="card amber">
+        <h3 class="a">From scratch</h3>
+        <pre><code>$ poetry new my-app
+Created package my_app in my-app
+
+$ tree -a my-app
+my-app/
+├── pyproject.toml
+├── README.md
+├── src/
+│   └── my_app/
+│       └── __init__.py
+└── tests/
+    └── __init__.py
+
+# flat layout (no src/)
+poetry new --flat my-app
+
+# library only (skip the tests dir)
+poetry new --readme=md my-app</code></pre>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">In-place on an existing repo</h3>
+        <pre><code>$ cd existing-repo
+$ poetry init
+Package name [existing-repo]:
+Version [0.1.0]:
+Description []:
+Author [Brendan &lt;you@x.com&gt;, n to skip]:
+Compatible Python versions [^3.12]:
+Would you like to define your dependencies interactively? (yes/no) [yes]: no
+Would you like to define your development dependencies interactively? (yes/no) [yes]: no</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">What you get out of the box</h3>
+        <ul>
+          <li><span class="a">src/ layout</span> by default — keeps your tests honest</li>
+          <li><span class="a">PEP 621 <code>[project]</code></span> table (Poetry 2.0+)</li>
+          <li><span class="a">poetry-core</span> as the build-system</li>
+          <li><span class="a">README.md</span> + a tests scaffold</li>
+        </ul>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">First commands</h3>
+        <pre><code>cd my-app
+poetry add requests
+poetry install
+poetry run python -c "import my_app; print(my_app)"</code></pre>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Tip — check Python in</h3>
+        <p>Add a <code>.python-version</code> file (pyenv / asdf) and pin <code>requires-python</code> in <code>pyproject.toml</code>. Two pinpoints, one reproducible env.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 07 — PYPROJECT ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">06</span>
+    <h2>pyproject.toml — Source of Truth (Poetry 2.0)</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Anatomy of a Poetry 2.0 project</h3>
+        <pre><code>[project]
+name = "my-app"
+version = "0.1.0"
+description = "Example service"
+readme = "README.md"
+requires-python = "&gt;=3.11,&lt;3.14"
+authors = [
+  { name = "Brendan Lynskey",
+    email = "you@example.com" }
+]
+dependencies = [
+  "fastapi (&gt;=0.115,&lt;1)",
+  "httpx (&gt;=0.27,&lt;1)",
+  "pydantic (&gt;=2.8,&lt;3)",
+]
+
+[project.optional-dependencies]
+postgres = ["asyncpg (&gt;=0.29)"]
+
+[tool.poetry]
+package-mode = true
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8"
+ruff   = "^0.6"
+mypy   = "^1.10"
+
+[build-system]
+requires      = ["poetry-core&gt;=2.0"]
+build-backend = "poetry.core.masonry.api"</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g"><code>[project]</code> vs <code>[tool.poetry]</code></h3>
+        <ul>
+          <li><span class="a">[project]</span> — PEP 621 standard metadata. Read by uv, pdm, Hatch, build, etc. Use this for everything portable.</li>
+          <li><span class="g">[tool.poetry]</span> — Poetry-specific: package mode, custom URLs, extras-of-extras, source priorities, group <em>dev</em> deps in caret syntax.</li>
+          <li>Pre-2.0 projects had <em>everything</em> under <code>[tool.poetry]</code>. Migrate when convenient.</li>
+        </ul>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Version specifiers — quick reference</h3>
+        <table>
+          <thead><tr><th>Spec</th><th>Means</th></tr></thead>
+          <tbody>
+            <tr><td><code>^1.2.3</code></td><td>≥ 1.2.3, &lt; 2.0.0 (caret — Poetry default)</td></tr>
+            <tr><td><code>~1.2.3</code></td><td>≥ 1.2.3, &lt; 1.3.0 (tilde)</td></tr>
+            <tr><td><code>==1.2.3</code></td><td>exactly</td></tr>
+            <tr><td><code>&gt;=1.2,&lt;2</code></td><td>explicit range</td></tr>
+            <tr><td><code>*</code></td><td>any</td></tr>
+            <tr><td><code>1.2.*</code></td><td>wildcard</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Caret is not SemVer</h3>
+        <p>Poetry's <code>^0.2.3</code> means <code>&gt;=0.2.3,&lt;0.3.0</code> — for pre-1.0 packages the upper bound is the next minor, not the next major. PEP 440 / PyPI doesn't define caret; it's a Poetry convention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 08 — POETRY ADD/REMOVE ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">07</span>
+    <h2>poetry add / poetry remove</h2>
+  </div>
+  <p>The everyday verbs. Each call edits <code>pyproject.toml</code>, refreshes <code>poetry.lock</code>, and updates the venv — atomically.</p>
+  <div class="cols cols-2" style="margin-top:0.4em;">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Adding</h3>
+        <pre><code># runtime deps (caret bound by default)
+poetry add fastapi httpx
+
+# explicit version
+poetry add 'pydantic@^2.8'
+poetry add 'pydantic&gt;=2.8,&lt;3'
+
+# dev-group dependency
+poetry add --group dev pytest ruff mypy
+
+# extras
+poetry add 'fastapi[standard]'
+
+# optional dep that becomes an extra
+poetry add asyncpg --optional
+
+# from a local path / git / URL
+poetry add ./libs/internal-utils
+poetry add 'git+https://github.com/foo/bar.git#main'
+poetry add 'https://files.pythonhosted.org/.../wheel.whl'
+
+# editable
+poetry add --editable ./libs/internal-utils
+
+# dry-run (don't write files)
+poetry add fastapi --dry-run</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">Removing &amp; updating</h3>
+        <pre><code># remove
+poetry remove httpx
+poetry remove --group dev pytest
+
+# update — re-resolve within constraints
+poetry update                # everything
+poetry update fastapi        # one package
+poetry update --with dev     # include groups
+
+# refresh the lock without re-installing
+poetry lock                  # 2.0+: refreshes lock
+poetry lock --no-update      # 1.x equivalent of "lock to current"
+
+# show what would change
+poetry update --dry-run</code></pre>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">What changes on disk</h3>
+        <ul>
+          <li><code>pyproject.toml</code> — adds the dependency line in the right table</li>
+          <li><code>poetry.lock</code> — re-resolves; the diff is your audit trail</li>
+          <li><code>.venv</code> (or cached venv) — packages installed/upgraded</li>
+        </ul>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Tip</h3>
+        <p>Always commit <code>pyproject.toml</code> and <code>poetry.lock</code> together. Reviewers can see both intent and effect in one diff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 09 — POETRY.LOCK ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">08</span>
+    <h2>The Lockfile — poetry.lock</h2>
+  </div>
+  <p><code>poetry.lock</code> records the <span class="a">exact resolved version</span> of every transitive dependency, with hashes, for cross-platform install. Cross-platform, but resolved per Python version range.</p>
+  <div class="cols cols-2" style="margin-top:0.5em;">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Excerpt</h3>
+        <pre><code>[[package]]
+name = "fastapi"
+version = "0.115.4"
+description = "..."
+optional = false
+python-versions = "&gt;=3.8"
+groups = ["main"]
+files = [
+  { file = "fastapi-0.115.4-py3-none-any.whl",
+    hash = "sha256:abc..." },
+  { file = "fastapi-0.115.4.tar.gz",
+    hash = "sha256:def..." },
+]
+
+[package.dependencies]
+pydantic   = "&gt;=1.7.4,!=1.8,&lt;3.0.0"
+starlette  = "&gt;=0.40.0,&lt;0.42.0"
+typing-extensions = "&gt;=4.8.0"
+
+[metadata]
+lock-version = "2.1"
+python-versions = "&gt;=3.11,&lt;3.14"
+content-hash = "..."</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">What the lock guarantees</h3>
+        <ul>
+          <li>Same resolved versions on every developer machine, every CI run</li>
+          <li>SHA256 hashes for supply-chain integrity (verified on install)</li>
+          <li>Cross-platform: one lock for Linux, macOS, Windows</li>
+          <li>Per-group membership (<code>main</code>, <code>dev</code>, <code>docs</code>) recorded per package</li>
+          <li><code>content-hash</code> ties the lock to the <code>pyproject.toml</code> that produced it</li>
+        </ul>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Reproducibility flags</h3>
+        <pre><code># refuse to update the lock — fail if it's out of date
+poetry install --no-update     # 1.x
+poetry install                 # 2.0 default if lock matches
+
+# 2.0+: hard fail if pyproject changed
+poetry check --lock
+
+# regenerate lock without changing versions
+poetry lock --no-update        # 1.x
+poetry lock                    # 2.0 — refreshes hashes only</code></pre>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">In CI</h3>
+        <p>Always run <span class="a"><code>poetry check --lock</code></span> at the top of CI. If the lock is stale or hash-mismatched, the build fails immediately — the way it should.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 10 — POETRY INSTALL ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">09</span>
+    <h2>poetry install &amp; poetry sync</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">What install does</h3>
+        <ol>
+          <li>Read <code>pyproject.toml</code> + <code>poetry.lock</code></li>
+          <li>Verify the <code>content-hash</code> matches</li>
+          <li>Ensure a venv exists with a compatible Python</li>
+          <li>Install every package at its locked version + hash</li>
+          <li>Install the project itself in editable mode (if <code>package-mode = true</code>)</li>
+        </ol>
+        <p style="margin-top:.3em;">Default behaviour is <span class="g">additive</span> — packages already in the venv that aren't in the lock are <em>not</em> removed.</p>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">poetry sync (Poetry 2.0)</h3>
+        <pre><code># exact-match install: removes anything
+# in the venv that isn't in the lock
+poetry sync
+
+# pre-2.0 equivalent
+poetry install --sync</code></pre>
+        <p>Use <code>sync</code> for production builds. Use <code>install</code> for daily dev where extra cached packages don't hurt.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Common flag combinations</h3>
+        <pre><code>poetry install                       # main + default groups
+poetry install --with dev,docs       # extra groups
+poetry install --without dev         # production install
+poetry install --only main           # nothing but runtime
+poetry install --extras "postgres"   # one extra
+poetry install --all-extras          # every extra
+poetry install --no-root             # don't install the project itself
+poetry sync                          # exact match (2.0)
+poetry install --compile             # pre-compile .pyc</code></pre>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Production install (Docker stage)</h3>
+        <pre><code>RUN poetry config virtualenvs.create false \
+ && poetry install --only main --no-root --no-interaction
+# or, in 2.0:
+RUN poetry config virtualenvs.create false \
+ && poetry sync --only main --no-root</code></pre>
+        <ul>
+          <li><code>--only main</code> drops dev groups</li>
+          <li><code>--no-root</code> when copying source separately</li>
+          <li><code>virtualenvs.create false</code> installs into the system Python in the container</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 11 — VIRTUAL ENVIRONMENTS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">10</span>
+    <h2>Virtual Environments — poetry env</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Auto-managed venvs</h3>
+        <pre><code># default location (cached, content-hashed)
+~/.cache/pypoetry/virtualenvs/
+    my-app-aB3-py3.12/
+
+# inspect
+poetry env info
+poetry env info --path     # just the path
+poetry env list            # all venvs Poetry knows about
+poetry env list --full-path
+
+# remove
+poetry env remove python3.12
+poetry env remove --all</code></pre>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">In-project venv (recommended)</h3>
+        <pre><code># once, project-locally
+poetry config virtualenvs.in-project true --local
+
+# now Poetry creates .venv in the repo
+poetry install
+ls .venv/
+
+# IDEs (VS Code, PyCharm) auto-detect .venv</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Pick a Python interpreter</h3>
+        <pre><code># point Poetry at a specific Python
+poetry env use python3.12
+poetry env use /usr/bin/python3.13
+poetry env use $(pyenv which python)
+
+# show which is currently active
+poetry env info --executable</code></pre>
+        <p>Poetry doesn't <em>install</em> Python — it picks an existing one. Pair with pyenv / asdf / rye for switching.</p>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Useful config keys</h3>
+        <pre><code>poetry config virtualenvs.in-project true
+poetry config virtualenvs.path "$HOME/.venvs"
+poetry config virtualenvs.prefer-active-python true
+poetry config virtualenvs.options.no-pip true
+poetry config virtualenvs.options.system-site-packages false</code></pre>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Common pitfall</h3>
+        <p>If <code>virtualenvs.create=false</code> and Poetry can't find a venv, it'll install into the host Python. Fine in Docker, dangerous on a dev laptop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 12 — POETRY RUN / SHELL ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">11</span>
+    <h2>poetry run &amp; poetry shell</h2>
+  </div>
+  <p><code>poetry run</code> exec's a command in the project venv without activating it. <span class="g">No <code>source .venv/bin/activate</code> required</span>.</p>
+  <div class="cols cols-2" style="margin-top:0.5em;">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Everyday usage</h3>
+        <pre><code>poetry run python main.py
+poetry run pytest -q
+poetry run ruff check .
+poetry run mypy src/
+poetry run ipython
+poetry run python -c 'import torch; print(torch.__version__)'
+
+# scripts defined in pyproject
+poetry run serve</code></pre>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">Console scripts</h3>
+        <p>Define entry points in <code>pyproject.toml</code> and call them by name.</p>
+        <pre><code>[project.scripts]
+serve = "myapp.cli:main"
+
+# or the legacy [tool.poetry.scripts]
+[tool.poetry.scripts]
+serve = "myapp.cli:main"</code></pre>
+        <pre><code>poetry run serve --port 8080</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Activating the shell</h3>
+        <pre><code># Poetry 2.0: use the env-activate command
+poetry env activate
+# prints a shell command to evaluate, e.g.
+#   source /path/to/.venv/bin/activate
+
+# one-liner
+eval $(poetry env activate)
+
+# or just source the file directly
+source $(poetry env info --path)/bin/activate</code></pre>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b"><code>poetry shell</code> — moved to a plugin</h3>
+        <p>The classic <code>poetry shell</code> command was removed from core in 2.0. Reinstate it via the official plugin:</p>
+        <pre><code>poetry self add poetry-plugin-shell
+poetry shell</code></pre>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Pitfall</h3>
+        <p><code>poetry run python</code> ≠ a previously-activated Python. If you've manually <code>source</code>'d the venv, drop the <code>poetry run</code> prefix to avoid double activation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 13 — PYTHON VERSIONS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">12</span>
+    <h2>Managing Python Versions</h2>
+  </div>
+  <p>Poetry <span class="a">picks</span> a Python interpreter; it does not <span class="r">install</span> one. Pair Poetry with a Python version manager.</p>
+  <div class="cols cols-2" style="margin-top:0.5em;">
+    <div>
+      <div class="card amber">
+        <h3 class="a">pyenv (most common)</h3>
+        <pre><code># install a Python
+pyenv install 3.12.7
+pyenv install 3.13.0
+
+# project-local pin (writes .python-version)
+pyenv local 3.12.7
+
+# point Poetry at it
+poetry env use $(pyenv which python)
+poetry env info</code></pre>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">asdf</h3>
+        <pre><code>asdf plugin add python
+asdf install python 3.12.7
+asdf local python 3.12.7
+poetry env use python</code></pre>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">uv as the Python installer</h3>
+        <pre><code>uv python install 3.12.7
+poetry env use $(uv python find 3.12.7)</code></pre>
+        <p>Use uv just for interpreter management, Poetry for the project. Belt-and-braces.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card blue">
+        <h3 class="b">Constraints in pyproject.toml</h3>
+        <pre><code># PEP 621 (preferred)
+[project]
+requires-python = "&gt;=3.11,&lt;3.14"
+
+# Pre-2.0 / [tool.poetry] section
+[tool.poetry.dependencies]
+python = "^3.11"</code></pre>
+        <p>The constraint affects the resolver: Poetry will only consider package versions that match every Python in the range.</p>
+      </div>
+      <div class="card amber" style="margin-top:0.4em;">
+        <h3 class="a">Switching mid-project</h3>
+        <pre><code># nuke the old venv
+poetry env remove python3.11
+
+# tell Poetry the new one
+poetry env use python3.12
+
+# re-install — no need to re-lock if range is wide enough
+poetry install</code></pre>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Watch out</h3>
+        <p>If you tighten <code>requires-python</code> after the lock was generated, <code>poetry lock</code> will need to re-resolve. Loose ranges (e.g. <code>&gt;=3.11,&lt;3.14</code>) keep the lock stable across team members on different Pythons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 14 — DEPENDENCY GROUPS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">13</span>
+    <h2>Dependency Groups (Poetry 1.2+)</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Declaring groups</h3>
+        <pre><code>[tool.poetry.group.dev.dependencies]
+pytest    = "^8"
+ruff      = "^0.6"
+mypy      = "^1.10"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+mkdocs            = "^1.6"
+mkdocs-material   = "^9"
+
+[tool.poetry.group.profile.dependencies]
+py-spy = "^0.3"
+memray = "^1"</code></pre>
+        <p style="margin-top:.3em;">Groups are <span class="g">internal-only</span> — never installed by your downstream users.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">Selecting groups at install time</h3>
+        <pre><code># default: main + non-optional groups (dev included)
+poetry install
+
+# explicit
+poetry install --with docs
+poetry install --with docs,profile
+poetry install --without dev
+poetry install --only main          # production
+poetry install --only docs          # docs build
+poetry install --all-groups         # everything</code></pre>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Optional vs default groups</h3>
+        <ul>
+          <li>Default group (no <code>optional = true</code>) — installed by <code>poetry install</code> automatically</li>
+          <li><span class="a">Optional group</span> — only installed when explicitly requested with <code>--with</code></li>
+          <li>Use optional for heavy/specialised stacks: GPU libs, profiling, perf tooling</li>
+        </ul>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Adding to a group</h3>
+        <pre><code>poetry add --group dev pytest-asyncio
+poetry add --group docs mkdocs-material
+poetry add --group profile py-spy</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 15 — EXTRAS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">14</span>
+    <h2>Optional Extras (PEP 621)</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Public flags users opt into</h3>
+        <pre><code># Poetry 2.0 / PEP 621
+[project]
+dependencies = [
+  "fastapi (&gt;=0.115)",
+]
+
+[project.optional-dependencies]
+postgres = ["asyncpg (&gt;=0.29)"]
+redis    = ["redis (&gt;=5)"]
+all      = ["my-app[postgres,redis]"]
+
+# Pre-2.0 syntax
+[tool.poetry.dependencies]
+asyncpg = { version = "^0.29", optional = true }
+redis   = { version = "^5",    optional = true }
+
+[tool.poetry.extras]
+postgres = ["asyncpg"]
+redis    = ["redis"]
+all      = ["asyncpg", "redis"]</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">Installing with extras</h3>
+        <pre><code># your dev workflow
+poetry install --extras "postgres redis"
+poetry install --all-extras
+
+# downstream user — pip / uv / pipx all support PEP 621
+pip install 'my-app[postgres,redis]'
+uv pip install 'my-app[postgres]'
+pipx install 'my-app[postgres]'</code></pre>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Groups vs extras — when to use which</h3>
+        <table>
+          <thead><tr><th></th><th>Groups</th><th>Extras</th></tr></thead>
+          <tbody>
+            <tr><td>Visible to users</td><td>no</td><td>yes</td></tr>
+            <tr><td>Use case</td><td>dev tooling</td><td>opt-in features</td></tr>
+            <tr><td>Standard</td><td>Poetry-only (PEP 735 in 2.0+)</td><td>PEP 621</td></tr>
+            <tr><td>Cmd</td><td><code>--with dev</code></td><td><code>--extras postgres</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Don't put dev tooling in extras</h3>
+        <p>If <code>pytest</code> is in <code>[project.optional-dependencies]</code>, your users can <code>pip install my-app[test]</code> and pollute their environment. Use a <span class="g">group</span> instead.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 16 — SOURCES / INDEXES ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">15</span>
+    <h2>Source Constraints &amp; Private Indexes</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Defining sources</h3>
+        <pre><code>[[tool.poetry.source]]
+name     = "PyPI"
+priority = "primary"
+
+[[tool.poetry.source]]
+name     = "internal"
+url      = "https://pkg.acme.com/simple"
+priority = "supplemental"
+
+[[tool.poetry.source]]
+name     = "pytorch-cu124"
+url      = "https://download.pytorch.org/whl/cu124"
+priority = "explicit"</code></pre>
+        <p style="margin-top:.3em;">Priority levels:</p>
+        <ul>
+          <li><span class="a">primary</span> — searched first</li>
+          <li><span class="g">supplemental</span> — searched only if not found upstream</li>
+          <li><span class="p">explicit</span> — used <em>only</em> when a package is bound to it</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">Pin a package to a source</h3>
+        <pre><code>poetry add --source internal mylib
+poetry add --source pytorch-cu124 torch
+
+# resulting pyproject
+[tool.poetry.dependencies]
+mylib = { version = "^1.2", source = "internal" }
+torch = { version = "^2.5", source = "pytorch-cu124" }</code></pre>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Authentication (HTTP basic / token)</h3>
+        <pre><code># interactive
+poetry config http-basic.internal ci $TOKEN
+
+# env-vars (CI-friendly)
+export POETRY_HTTP_BASIC_INTERNAL_USERNAME=ci
+export POETRY_HTTP_BASIC_INTERNAL_PASSWORD=$TOKEN
+
+# certificate-based
+poetry config certificates.internal.client-cert /path/cert.pem</code></pre>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Why "explicit" matters</h3>
+        <p>If <code>pytorch-cu124</code> is <code>supplemental</code>, Poetry might pull a Mac-only wheel by accident. Marking it <code>explicit</code> means only packages that opt in are routed there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 17 — BUILD & PUBLISH ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">16</span>
+    <h2>Build &amp; Publish</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Build wheels &amp; sdists</h3>
+        <pre><code># build into ./dist/
+poetry build
+
+# only one format
+poetry build --format wheel
+poetry build --format sdist
+
+# inspect
+unzip -l dist/my_app-0.1.0-py3-none-any.whl</code></pre>
+        <p style="margin-top:.3em;">Uses <span class="a">poetry-core</span> as the PEP 517 build backend. Pure-Python by default; for native extensions add a <code>build.py</code> script.</p>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">Publish to PyPI</h3>
+        <pre><code># configure once
+poetry config pypi-token.pypi $PYPI_TOKEN
+
+# publish what's in dist/
+poetry publish
+
+# build + publish in one shot
+poetry publish --build
+
+# test PyPI
+poetry config repositories.testpypi https://test.pypi.org/legacy/
+poetry config pypi-token.testpypi $TEST_TOKEN
+poetry publish -r testpypi</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">GitHub Actions: trusted publish</h3>
+        <pre><code>name: Publish
+on:
+  release:
+    types: [published]
+permissions:
+  id-token: write   # OIDC for PyPI
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: snok/install-poetry@v1
+        with: { version: '2.0.1' }
+      - run: poetry build
+      - uses: pypa/gh-action-pypi-publish@release/v1</code></pre>
+        <p>Use the official <code>pypa/gh-action-pypi-publish</code> for trusted publishing — no API token to manage.</p>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Bumping a version</h3>
+        <pre><code>poetry version 1.2.0
+poetry version patch
+poetry version minor
+poetry version major
+poetry version prerelease
+poetry version --short          # print only</code></pre>
+        <p>Edits <code>pyproject.toml</code> in place. For VCS-driven versions use the <span class="a">poetry-dynamic-versioning</span> plugin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 18 — PLUGINS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">17</span>
+    <h2>Plugins — Extending Poetry</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Managing plugins</h3>
+        <pre><code># install (into Poetry's own venv)
+poetry self add poetry-plugin-export
+poetry self add poetry-plugin-bundle
+poetry self add poetry-dynamic-versioning
+
+# list
+poetry self show plugins
+
+# upgrade / remove
+poetry self update
+poetry self remove poetry-plugin-export</code></pre>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">poetry-plugin-export</h3>
+        <pre><code># produce a requirements.txt for tools that
+# can't read poetry.lock
+poetry export --format requirements.txt \
+  --output requirements.txt \
+  --without-hashes \
+  --only main
+
+# include hashes (default)
+poetry export -f requirements.txt -o requirements.txt</code></pre>
+        <p>Was bundled until 1.x; now an opt-in plugin. Useful for AWS Lambda, vendor scanners, legacy <code>pip</code> images.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Other widely-used plugins</h3>
+        <table>
+          <thead><tr><th>Plugin</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><code>poetry-plugin-shell</code></td><td>Restores the classic <code>poetry shell</code> in 2.0+</td></tr>
+            <tr><td><code>poetry-plugin-bundle</code></td><td>Bundles a project + deps into a self-contained venv</td></tr>
+            <tr><td><code>poetry-plugin-up</code></td><td>Bumps caret/tilde upper bounds in <code>pyproject.toml</code></td></tr>
+            <tr><td><code>poetry-dynamic-versioning</code></td><td>Versions sourced from git tags</td></tr>
+            <tr><td><code>poetry-plugin-mono-repo-deps</code></td><td>Local path deps in monorepos</td></tr>
+            <tr><td><code>poethepoet</code></td><td>Task runner — like <code>npm run</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">poethepoet (poe)</h3>
+        <pre><code>[tool.poe.tasks]
+test  = "pytest"
+lint  = "ruff check ."
+serve = "uvicorn app:main --reload"
+
+# now
+poetry run poe test
+poetry run poe lint</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 19 — CONFIGURATION ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">18</span>
+    <h2>Configuration — poetry config &amp; poetry.toml</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">CLI configuration</h3>
+        <pre><code># global (default scope)
+poetry config virtualenvs.in-project true
+poetry config virtualenvs.path "$HOME/.venvs"
+poetry config installer.parallel true
+poetry config installer.max-workers 10
+poetry config cache-dir "/big/disk/poetry-cache"
+
+# project-local — writes ./poetry.toml
+poetry config virtualenvs.in-project true --local
+
+# inspect
+poetry config --list
+poetry config virtualenvs.in-project</code></pre>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">Useful keys</h3>
+        <table>
+          <thead><tr><th>Key</th><th>What</th></tr></thead>
+          <tbody>
+            <tr><td><code>virtualenvs.in-project</code></td><td>Put venv in <code>./.venv</code></td></tr>
+            <tr><td><code>virtualenvs.create</code></td><td>Create one or use system Python</td></tr>
+            <tr><td><code>virtualenvs.prefer-active-python</code></td><td>Honour the activated Python first</td></tr>
+            <tr><td><code>installer.parallel</code></td><td>Parallel wheel installs</td></tr>
+            <tr><td><code>installer.max-workers</code></td><td>Worker threads</td></tr>
+            <tr><td><code>warnings.export</code></td><td>Silence the export plugin warning</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Environment variables</h3>
+        <pre><code>POETRY_VIRTUALENVS_IN_PROJECT=true
+POETRY_VIRTUALENVS_CREATE=false
+POETRY_HTTP_BASIC_INTERNAL_USERNAME=ci
+POETRY_HTTP_BASIC_INTERNAL_PASSWORD=$TOKEN
+POETRY_PYPI_TOKEN_PYPI=$TOKEN
+POETRY_CACHE_DIR=/big/disk/poetry-cache
+POETRY_NO_INTERACTION=1     # CI-safe</code></pre>
+        <p>Every <code>config</code> key has an env-var equivalent — uppercase, prefix <code>POETRY_</code>, dots → underscores.</p>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">poetry.toml (project-local)</h3>
+        <pre><code># sits next to pyproject.toml
+[virtualenvs]
+in-project = true
+
+[installer]
+parallel = true
+max-workers = 8</code></pre>
+        <p>Commit it to enforce team-wide settings. Don't put secrets here — those go in env-vars or <code>auth.toml</code>.</p>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Resolution order</h3>
+        <ol>
+          <li>Command-line flags</li>
+          <li>Environment variables (<code>POETRY_*</code>)</li>
+          <li>Project <code>./poetry.toml</code></li>
+          <li>User <code>~/.config/pypoetry/config.toml</code></li>
+          <li>Built-in defaults</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 20 — PERFORMANCE / INTERNALS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">19</span>
+    <h2>Performance &amp; Internals</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">The Mixology resolver</h3>
+        <ul>
+          <li>Port of Dart's <span class="a">PubGrub</span> algorithm — same family as Cargo, npm, uv</li>
+          <li>Conflict-driven clause learning — backtracks intelligently rather than re-trying the whole graph</li>
+          <li>Reports human-readable conflicts: "<em>fastapi requires pydantic ≥ 2, but my-lib pins pydantic &lt; 1</em>"</li>
+          <li>Slower than uv's Rust implementation but functionally equivalent — the same lock would result, just minutes vs seconds</li>
+        </ul>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">Caches</h3>
+        <ul>
+          <li>Wheel/sdist cache: <code>~/.cache/pypoetry/cache/</code></li>
+          <li>Virtualenvs: <code>~/.cache/pypoetry/virtualenvs/</code></li>
+          <li>HTTP cache (PyPI metadata): <code>~/.cache/pypoetry/cache/repositories/</code></li>
+          <li>Inspect: <code>poetry cache list</code>, <code>poetry cache clear &lt;name&gt; --all</code></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Speed-ups you can flip on</h3>
+        <pre><code># parallel wheel installation (default in modern Poetry)
+poetry config installer.parallel true
+poetry config installer.max-workers 10
+
+# skip pip in created venvs (faster bootstrap)
+poetry config virtualenvs.options.no-pip true
+
+# experimental: lazy-wheel partial downloads
+poetry config experimental.system-git-client false</code></pre>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Known slow spots</h3>
+        <ul>
+          <li><span class="a">Cold lock</span> on big graphs (transformers, all of LangChain) — minutes</li>
+          <li>Source-only packages with no wheels — Poetry has to download &amp; inspect</li>
+          <li><code>poetry update</code> with a wide range of pre-release-eligible packages</li>
+          <li>If lock perf hurts daily, evaluate <span class="a">uv</span> (companion deck) — same lock semantics, ~50× faster resolver</li>
+        </ul>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Tip — use <code>--no-update</code> in CI</h3>
+        <p><code>poetry install --no-update</code> (1.x) / default 2.0 behaviour skips re-resolution if the lock is fresh. Saves ~80 % of CI time on big projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 21 — COMPARISON ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">20</span>
+    <h2>Poetry vs pip / pipenv / pdm / Hatch / uv</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <table>
+        <thead><tr><th>Capability</th><th>pip</th><th>pipenv</th><th>pdm</th><th>Hatch</th><th>Poetry</th><th>uv</th></tr></thead>
+        <tbody>
+          <tr><td>Install / uninstall</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Lockfile</td><td>—</td><td>✅</td><td>✅</td><td>—</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Cross-platform lock</td><td>—</td><td>partial</td><td>✅</td><td>—</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Multi-Python lock</td><td>—</td><td>—</td><td>✅</td><td>—</td><td>partial</td><td>✅</td></tr>
+          <tr><td>Workspaces</td><td>—</td><td>—</td><td>partial</td><td>—</td><td>via plugin</td><td>✅</td></tr>
+          <tr><td>Manage Python</td><td>—</td><td>—</td><td>partial</td><td>✅</td><td>—</td><td>✅</td></tr>
+          <tr><td>Build / publish</td><td>—</td><td>—</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+          <tr><td>PEP 621 native</td><td>—</td><td>—</td><td>✅</td><td>✅</td><td>2.0+</td><td>✅</td></tr>
+          <tr><td>Plugin ecosystem</td><td>—</td><td>—</td><td>partial</td><td>✅</td><td>✅</td><td>—</td></tr>
+          <tr><td>Resolver speed</td><td>slow</td><td>slow</td><td>medium</td><td>medium</td><td>medium</td><td><span class="g">very fast</span></td></tr>
+          <tr><td>Maturity / mindshare</td><td>very high</td><td>declining</td><td>medium</td><td>medium</td><td><span class="g">very high</span></td><td>rising fast</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="card amber">
+        <h3 class="a">Verdicts</h3>
+        <ul>
+          <li><span class="a">pip</span> — the floor; fine for one-off venvs; pair with pip-tools if you want reproducibility</li>
+          <li><span class="g">pipenv</span> — historical; lock semantics &amp; UX have not aged well</li>
+          <li><span class="p">pdm</span> — closest spiritual ancestor of uv; smaller ecosystem; <code>__pypackages__</code> is unusual</li>
+          <li><span class="b">Hatch</span> — strong on builds + matrices, weaker on locking</li>
+          <li><span class="r">Poetry</span> — mature, opinionated, the de-facto standard for new app projects since ~2020</li>
+          <li><span class="a">uv</span> — same lock semantics, much faster, single binary; fastest-rising</li>
+        </ul>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">When to pick Poetry today</h3>
+        <ul>
+          <li>You value plugin ecosystem &amp; community familiarity</li>
+          <li>Your team already speaks Poetry — switching cost &gt; gain</li>
+          <li>You publish libraries and like Poetry's opinionated workflow</li>
+          <li>You want pure-Python (no Rust binary in the supply chain)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 22 — MIGRATING FROM PIP ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">21</span>
+    <h2>Migrating from pip / requirements.txt</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Stage 1 — initialise Poetry</h3>
+        <pre><code>cd existing-repo
+poetry init       # answer prompts (or skip with --no-interaction)
+
+# this writes a minimal pyproject.toml with no deps yet</code></pre>
+      </div>
+      <div class="card green" style="margin-top:0.4em;">
+        <h3 class="g">Stage 2 — import requirements</h3>
+        <pre><code># cleanest path: feed the file to poetry add
+cat requirements.txt | xargs poetry add
+
+# dev requirements separately
+cat requirements-dev.txt | xargs poetry add --group dev
+
+# or, more controlled — eyeball each
+poetry add fastapi httpx pydantic
+poetry add --group dev pytest ruff mypy</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card purple">
+        <h3 class="p">Stage 3 — produce poetry.lock</h3>
+        <pre><code>poetry lock              # generate the lockfile
+poetry install           # verify it installs cleanly
+poetry run pytest        # smoke test
+
+git add pyproject.toml poetry.lock
+git rm requirements.txt requirements-dev.txt</code></pre>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Keep <code>requirements.txt</code> for downstream</h3>
+        <pre><code>poetry self add poetry-plugin-export
+poetry export -f requirements.txt \
+  --without-hashes \
+  --only main \
+  -o requirements.txt</code></pre>
+        <p>Useful for AWS Lambda, IDE remote interpreters, vendor security scanners.</p>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">Don't</h3>
+        <p>Don't keep both <code>requirements.txt</code> and <code>poetry.lock</code> as <em>sources of truth</em>. Pick one. Export <em>from</em> the lock; never edit a generated requirements file by hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 23 — MIGRATING TO 2.0 / PEP 621 ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">22</span>
+    <h2>Poetry 1.x → 2.0 — Migrating to PEP 621</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Before — Poetry 1.x layout</h3>
+        <pre><code>[tool.poetry]
+name        = "svc"
+version     = "1.2.3"
+description = "..."
+authors     = ["You &lt;you@x.com&gt;"]
+readme      = "README.md"
+
+[tool.poetry.dependencies]
+python  = "^3.12"
+fastapi = "^0.115"
+httpx   = "^0.27"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8"
+ruff   = "^0.6"
+
+[build-system]
+requires      = ["poetry-core&gt;=1.0"]
+build-backend = "poetry.core.masonry.api"</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">After — Poetry 2.0 / PEP 621</h3>
+        <pre><code>[project]
+name        = "svc"
+version     = "1.2.3"
+description = "..."
+readme      = "README.md"
+requires-python = "&gt;=3.12,&lt;3.14"
+authors     = [
+  { name = "You", email = "you@x.com" }
+]
+dependencies = [
+  "fastapi (&gt;=0.115,&lt;1)",
+  "httpx (&gt;=0.27,&lt;1)",
+]
+
+[tool.poetry]
+package-mode = true
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8"
+ruff   = "^0.6"
+
+[build-system]
+requires      = ["poetry-core&gt;=2.0"]
+build-backend = "poetry.core.masonry.api"</code></pre>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Key changes</h3>
+        <ul>
+          <li><span class="a">Metadata</span> moves from <code>[tool.poetry]</code> to <code>[project]</code></li>
+          <li>Runtime deps in <code>dependencies = [...]</code> with PEP 508 strings</li>
+          <li><span class="a">Dev/optional groups stay</span> under <code>[tool.poetry.group.*]</code> — Poetry-specific</li>
+          <li><code>requires-python</code> replaces the <code>python = "^3.12"</code> entry</li>
+          <li><code>package-mode = true/false</code> moves to <code>[tool.poetry]</code></li>
+          <li>Bump <code>poetry-core</code> requirement to <code>&gt;=2.0</code></li>
+        </ul>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Verify after migration</h3>
+        <pre><code>poetry check               # validate pyproject
+poetry lock                # refresh lock format
+poetry install
+poetry build               # confirm wheel still builds</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 24 — CI PATTERNS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">23</span>
+    <h2>CI Patterns — GitHub Actions</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Minimal CI workflow</h3>
+        <pre><code>name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - uses: snok/install-poetry@v1
+        with:
+          version: '2.0.1'
+          virtualenvs-in-project: true
+          virtualenvs-create: true
+
+      - name: Cache venv
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ matrix.python }}-${{ hashFiles('poetry.lock') }}
+
+      - run: poetry check --lock
+      - run: poetry install --with dev --no-interaction
+      - run: poetry run ruff check .
+      - run: poetry run mypy src/
+      - run: poetry run pytest -q --cov</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">Why <code>snok/install-poetry@v1</code></h3>
+        <ul>
+          <li>Officially recommended — pins the Poetry version</li>
+          <li>Sets <code>POETRY_NO_INTERACTION=1</code> for you</li>
+          <li>Configures <code>virtualenvs.in-project</code> so cache keys are easy</li>
+          <li>Adds <code>poetry</code> to PATH</li>
+        </ul>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Speed-ups</h3>
+        <ul>
+          <li>Cache <code>.venv</code> keyed on <code>poetry.lock</code> — turns reinstalls into seconds</li>
+          <li><code>poetry install --no-interaction --no-ansi</code> for cleaner logs</li>
+          <li><code>poetry config installer.parallel true</code> (default in modern Poetry)</li>
+          <li>Skip <code>poetry install --sync</code> in dev jobs; use it in release jobs only</li>
+        </ul>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Lock-drift gate</h3>
+        <pre><code>- run: poetry check --lock
+  # 2.0+: fails if pyproject changed
+  # without re-locking, or hashes are off</code></pre>
+        <p>Run this <em>before</em> install. Fail fast on lock drift.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 25 — DOCKER PATTERNS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">24</span>
+    <h2>Docker Patterns</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Multi-stage build</h3>
+        <pre><code># ─── builder ────────────────────────────
+FROM python:3.12-slim AS builder
+
+ENV POETRY_VERSION=2.0.1 \
+    POETRY_NO_INTERACTION=1 \
+    POETRY_VIRTUALENVS_CREATE=false \
+    PIP_NO_CACHE_DIR=1
+
+RUN pip install "poetry==${POETRY_VERSION}"
+
+WORKDIR /app
+COPY pyproject.toml poetry.lock ./
+
+# install deps only — leverages layer cache
+RUN poetry install --only main --no-root
+
+# now copy code and install the project itself
+COPY src/ src/
+RUN poetry install --only main
+
+# ─── runtime ────────────────────────────
+FROM python:3.12-slim AS runtime
+COPY --from=builder /usr/local/lib/python3.12/site-packages \
+                    /usr/local/lib/python3.12/site-packages
+COPY --from=builder /app /app
+WORKDIR /app
+CMD ["python", "-m", "myapp"]</code></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">Why <code>VIRTUALENVS_CREATE=false</code></h3>
+        <ul>
+          <li>The container <em>is</em> the venv — no need for one inside</li>
+          <li>Smaller image, simpler PATH, no double-activation</li>
+          <li>Set it via env-var so it survives layer caches</li>
+        </ul>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Layer-cache friendliness</h3>
+        <ol>
+          <li>Copy <code>pyproject.toml</code> + <code>poetry.lock</code> first</li>
+          <li><code>poetry install --only main --no-root</code> — caches deps</li>
+          <li>Copy source code</li>
+          <li><code>poetry install --only main</code> — installs the project itself</li>
+        </ol>
+        <p>Step 2 only invalidates when deps change — saves 90 %+ of rebuild time.</p>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Production sync</h3>
+        <pre><code># 2.0+ — guarantees no extras in the container
+RUN poetry sync --only main --no-root
+
+# 1.x equivalent
+RUN poetry install --sync --only main --no-root</code></pre>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">For air-gapped builds</h3>
+        <p>Pre-cache wheels on a build host, mount as a volume, and use <code>poetry install --no-cache --no-update</code> + a private index.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 26 — CHEAT SHEET ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">25</span>
+    <h2>Cheat Sheet — Daily Commands</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <table>
+        <thead><tr><th>Task</th><th>Command</th></tr></thead>
+        <tbody>
+          <tr><td>Start a project</td><td><code>poetry new my-app</code></td></tr>
+          <tr><td>Init in-place</td><td><code>poetry init</code></td></tr>
+          <tr><td>Add a dep</td><td><code>poetry add httpx</code></td></tr>
+          <tr><td>Add dev dep</td><td><code>poetry add --group dev pytest</code></td></tr>
+          <tr><td>Add an extra</td><td><code>poetry add --optional asyncpg</code></td></tr>
+          <tr><td>Remove dep</td><td><code>poetry remove httpx</code></td></tr>
+          <tr><td>Install</td><td><code>poetry install</code></td></tr>
+          <tr><td>Sync (exact match)</td><td><code>poetry sync</code></td></tr>
+          <tr><td>Update</td><td><code>poetry update</code></td></tr>
+          <tr><td>Run a script</td><td><code>poetry run python main.py</code></td></tr>
+          <tr><td>Run tests</td><td><code>poetry run pytest</code></td></tr>
+          <tr><td>Pick a Python</td><td><code>poetry env use python3.12</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table>
+        <thead><tr><th>Task</th><th>Command</th></tr></thead>
+        <tbody>
+          <tr><td>Activate (2.0)</td><td><code>eval $(poetry env activate)</code></td></tr>
+          <tr><td>Lock the deps</td><td><code>poetry lock</code></td></tr>
+          <tr><td>Validate lock</td><td><code>poetry check --lock</code></td></tr>
+          <tr><td>Production install</td><td><code>poetry install --only main --no-root</code></td></tr>
+          <tr><td>Build wheels</td><td><code>poetry build</code></td></tr>
+          <tr><td>Publish to PyPI</td><td><code>poetry publish</code></td></tr>
+          <tr><td>Bump version</td><td><code>poetry version patch</code></td></tr>
+          <tr><td>Export req.txt</td><td><code>poetry export -o req.txt</code></td></tr>
+          <tr><td>Show dep tree</td><td><code>poetry show --tree</code></td></tr>
+          <tr><td>Why is X here?</td><td><code>poetry show --tree X</code></td></tr>
+          <tr><td>List config</td><td><code>poetry config --list</code></td></tr>
+          <tr><td>Clear cache</td><td><code>poetry cache clear PyPI --all</code></td></tr>
+          <tr><td>Add a plugin</td><td><code>poetry self add poetry-plugin-export</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 27 — GOTCHAS ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">26</span>
+    <h2>Gotchas &amp; Troubleshooting</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">Caret on pre-1.0 packages</h3>
+        <p>Poetry's <code>^0.2.3</code> means <code>&gt;=0.2.3,&lt;0.3.0</code>, not <code>&lt;1.0</code>. Catches people from npm-land. If you want any 0.x, use <code>&gt;=0.2,&lt;1</code>.</p>
+      </div>
+      <div class="card green" style="margin-top:0.3em;">
+        <h3 class="g">"SolverProblemError"</h3>
+        <p>Two packages have incompatible constraints. Read the message — Mixology tells you exactly which versions fight. Common fixes:</p>
+        <ul>
+          <li>Loosen one bound (drop <code>^</code> for <code>&gt;=</code>)</li>
+          <li>Pin a known-good intermediate version</li>
+          <li>Update one offender to a newer line that supports both</li>
+        </ul>
+      </div>
+      <div class="card purple" style="margin-top:0.3em;">
+        <h3 class="p">Slow lock on big graphs</h3>
+        <p>Mixology re-checks the world for <code>poetry update</code>. Workarounds:</p>
+        <ul>
+          <li><code>poetry update foo bar</code> — scope to packages</li>
+          <li><code>poetry lock --no-update</code> (1.x) — refresh hashes only</li>
+          <li>Tighten <code>requires-python</code> — fewer candidate matrices</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card blue">
+        <h3 class="b">Private index 401</h3>
+        <pre><code># project pyproject
+[[tool.poetry.source]]
+name = "internal"
+url  = "https://pkg.acme.com/simple"
+
+# in CI
+POETRY_HTTP_BASIC_INTERNAL_USERNAME=ci
+POETRY_HTTP_BASIC_INTERNAL_PASSWORD=$TOKEN</code></pre>
+      </div>
+      <div class="card red" style="margin-top:0.3em;">
+        <h3 class="r">"Cache is huge"</h3>
+        <pre><code>poetry cache list
+poetry cache clear PyPI --all
+rm -rf ~/.cache/pypoetry/artifacts</code></pre>
+      </div>
+      <div class="card amber" style="margin-top:0.3em;">
+        <h3 class="a">poetry shell missing in 2.0</h3>
+        <pre><code>poetry self add poetry-plugin-shell
+# or:
+eval $(poetry env activate)</code></pre>
+      </div>
+      <div class="card green" style="margin-top:0.3em;">
+        <h3 class="g">Editable install of the project</h3>
+        <p>Default with <code>package-mode = true</code>. To skip it (e.g. monorepo apps), use:</p>
+        <pre><code>poetry install --no-root</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SLIDE 28 — SUMMARY ═══════════════════════════════ -->
+<section data-background-color="#0a0a0f">
+  <div class="slide-hdr">
+    <span class="tag">27</span>
+    <h2>Summary &amp; Next Steps</h2>
+  </div>
+  <div class="cols cols-2">
+    <div>
+      <div class="card amber">
+        <h3 class="a">What we covered</h3>
+        <ul>
+          <li>Poetry as the opinionated, declarative Python toolchain</li>
+          <li><code>poetry new</code> / <code>init</code> for project scaffolding</li>
+          <li>PEP 621 <code>[project]</code> + Poetry-specific <code>[tool.poetry]</code></li>
+          <li><code>poetry add</code> / <code>remove</code> / <code>install</code> / <code>sync</code></li>
+          <li><code>poetry.lock</code> as a hash-pinned, cross-platform contract</li>
+          <li>Virtual environments — <code>poetry env</code> &amp; the <code>activate</code> dance</li>
+          <li>Dependency groups vs optional extras</li>
+          <li>Private indexes &amp; source priorities</li>
+          <li>Build &amp; publish via <code>poetry-core</code></li>
+          <li>Plugins, configuration, performance internals</li>
+          <li>CI &amp; Docker patterns; common gotchas</li>
+        </ul>
+      </div>
+      <div class="card blue" style="margin-top:0.4em;">
+        <h3 class="b">Further reading</h3>
+        <p>python-poetry.org · github.com/python-poetry/poetry · poetry-core — github.com/python-poetry/poetry-core · PEP 621 — peps.python.org/pep-0621 · PEP 517 — peps.python.org/pep-0517 · install-poetry — github.com/snok/install-poetry</p>
+      </div>
+    </div>
+    <div>
+      <div class="card green">
+        <h3 class="g">Recommended next steps</h3>
+        <ol style="padding-left:1.2em;">
+          <li>Install Poetry via pipx and run <code>poetry init</code> on an existing repo</li>
+          <li>Move dev tooling under <code>[tool.poetry.group.dev.dependencies]</code></li>
+          <li>Turn on <code>virtualenvs.in-project = true</code> (project-local)</li>
+          <li>Add <code>poetry check --lock</code> as the first step in CI</li>
+          <li>Migrate your <code>[tool.poetry]</code> metadata to <code>[project]</code> (Poetry 2.0)</li>
+          <li>Install <code>poetry-plugin-export</code> if any consumer needs <code>requirements.txt</code></li>
+          <li>For libraries, set up trusted PyPI publishing via GitHub Actions</li>
+        </ol>
+      </div>
+      <div class="card purple" style="margin-top:0.4em;">
+        <h3 class="p">Companion / contrast deck</h3>
+        <p>For the speed-first alternative, see <span class="a">"Introduction to uv"</span> — same lock semantics, Rust binary, ~50× faster resolver. Side-by-side with this deck makes the trade-offs concrete.</p>
+      </div>
+      <div class="card red" style="margin-top:0.4em;">
+        <h3 class="r">One-line takeaway</h3>
+        <p>If your repo still juggles <code>requirements.txt</code> + <code>requirements-dev.txt</code> + <code>setup.py</code> + <code>twine</code> — replace all four with one <code>pyproject.toml</code> and one <code>poetry.lock</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  controls: true,
+  progress: true,
+  center: false,
+  width: 1100,
+  height: 900,
+  margin: 0.01,
+  plugins: [RevealHighlight],
+  highlight: { theme: 'monokai' }
+});
+</script>
+<script>
+(function(){
+  var h = Reveal.getConfig().height || 900;
+  var m = Reveal.getConfig().margin || 0.02;
+  var maxH = Math.floor(h * (1 - 2 * m)) + 'px';
+  function fixSlides(){
+    document.querySelectorAll('.reveal .slides>section,.reveal .slides>section>section').forEach(function(s){
+      s.style.display = 'block';
+      s.style.maxHeight = maxH;
+    });
+  }
+  Reveal.on('ready', fixSlides);
+  Reveal.on('slidechanged', fixSlides);
+})();
+</script>
+</body>
+</html>
